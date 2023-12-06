@@ -10,7 +10,12 @@ async def talent_handler(client: Client, msg: types.Message):
     top_rate = [] # total rate talent
     top_id = [] # id talent
     if len(talent) == 0:
-        return await msg.reply('<b>Astagfirulloh tobat bro</b>', True, enums.ParseMode.HTML)
+        return await msg.reply('❏ Haii {mention} \n <b>silahkan kirim pesan anda menggunakan hashtag:</b> \n\n• #mba [ untuk identitas perempuan]
+• #mas [ untuk identitas laki-laki ]
+• #spill [ untuk spill masalah ]
+• #tanya [ untuk bertanya ]
+• #story [ untuk berbagi cerita/curhat ]
+• #pap [ khusus media foto/video ] \n\n <b>Contoh pesan:</b> <code>#mas yang dari jogja. meet yuk {username} </code> \n\ <b>pastikan kamu sudah baca <a href="https://t.me/JAWAFES/9">rules</a> dan <a href="https://t.me/JAWAFES/10">help</a> terlebih dahulu</b>', True, enums.ParseMode.HTML)
     else:
         for uid in talent:
             rate = talent[str(uid)]['rate']
