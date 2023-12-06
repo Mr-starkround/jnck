@@ -10,18 +10,7 @@ async def talent_handler(client: Client, msg: types.Message):
     top_rate = [] # total rate talent
     top_id = [] # id talent
     if len(talent) == 0:
-        return await msg.reply('❏ Haii {mention}
- <b>silahkan kirim pesan anda menggunakan hashtag:</b>
-
-• #mba [ untuk identitas perempuan]
-• #mas [ untuk identitas laki-laki ]
-• #spill [ untuk spill masalah ]
-• #tanya [ untuk bertanya ]
-• #story [ untuk berbagi cerita/curhat ]
-• #pap [ khusus media foto/video ]
-
-<b>Contoh pesan:</b> <code>#mas yang dari jogja. meet yuk {username} </code> 
-<b>pastikan kamu sudah baca <a href="https://t.me/JAWAFES/9">rules</a> dan <a href="https://t.me/JAWAFES/10">help</a> terlebih dahulu</b>', True, enums.ParseMode.HTML)
+        return await msg.reply('<b>Silahkan klik /start dan baca help untuk mengirim menfess pada bot ini', True, enums.ParseMode.HTML)
     else:
         for uid in talent:
             rate = talent[str(uid)]['rate']
