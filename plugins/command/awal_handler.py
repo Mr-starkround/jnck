@@ -131,7 +131,8 @@ async def cb_help(client, callback_query):
 
 • <code>#mba</code> [ untuk identitas perempuan]
 • <code>#mas</code> [ untuk identitas laki-laki ]
-• <code>#spill</code> [ untuk spill masalah ] • <code>#tanya</code> [ untuk bertanya ]
+• <code>#spill</code> [ untuk spill masalah ] 
+• <code>#tanya</code> [ untuk bertanya ]
 • <code>#story</code> [ untuk berbagi cerita/curhat ]
 • <code>#pap</code> [ khusus media foto/video ]
 
