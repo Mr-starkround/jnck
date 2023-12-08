@@ -54,24 +54,6 @@ async def on_message(client: Client, msg: Message):
             elif command == '/list_ban':  # menampilkan perintah list banned
                 return await list_ban_handler(helper, client.id_bot)
 
-            elif command == '/talent':
-                return await talent_handler(client, msg)
-            
-            elif command == '/daddysugar':
-                return await daddy_sugar_handler(client, msg)
-
-            elif command == '/moansgirl':
-                return await moans_girl_handler(client, msg)
-            
-            elif command == '/moansboy':
-                return await moans_boy_handler(client, msg)
-
-            elif command == '/gfrent':
-                return await gf_rent_handler(client, msg)
-
-            elif command == '/bfrent':
-                return await bf_rent_handler(client, msg)
-
             elif command == '/stats':  # menampilkan perintah statistik
                 if uid == config.id_admin:
                     return await statistik_handler(helper, client.id_bot)
@@ -87,7 +69,7 @@ async def on_message(client: Client, msg: Message):
 
             elif re.search(r"^[\/]rate", command):
                 return await rate_talent_handler(client, msg)
-            
+
             elif re.search(r"^[\/]tf_coin", command):
                 return await transfer_coin_handler(client, msg)
 
@@ -106,31 +88,11 @@ async def on_message(client: Client, msg: Message):
 
             elif re.search(r"^[\/]addtalent", command):  # menambahkan talent baru
                 if uid == config.id_admin:
-                    return await tambah_talent_handler(client, msg)
-            
+                    return await tam_handler(client, msg)
+
             elif re.search(r"^[\/]addsugar", command):  # menambahkan daddy sugar baru
                 if uid == config.id_admin:
-                    return await tambah_sugar_daddy_handler(client, msg)
-            
-            elif re.search(r"^[\/]addgirl", command):  # menambahkan moans girl baru
-                if uid == config.id_admin:
-                    return await tambah_moans_girl_handler(client, msg)
-            
-            elif re.search(r"^[\/]addboy", command):  # menambahkan moans boy baru
-                if uid == config.id_admin:
-                    return await tambah_moans_boy_handler(client, msg)
-
-            elif re.search(r"^[\/]addgf", command):  # menambahkan gf rent baru
-                if uid == config.id_admin:
-                    return await tambah_gf_rent_handler(client, msg)
-
-            elif re.search(r"^[\/]addbf", command):  # menambahkan bf rent baru
-                if uid == config.id_admin:
-                    return await tambah_bf_rent_handler(client, msg)
-
-            elif re.search(r"^[\/]hapus", command):  # menambahkan mengapus talent
-                if uid == config.id_admin:
-                    return await hapus_talent_handler(client, msg)
+                    return await gagal_kirim_handler(client, msg)
 
             elif re.search(r"^[\/]ban", command):  # membanned user
                 member = database.get_data_pelanggan()
@@ -151,7 +113,7 @@ async def on_message(client: Client, msg: Message):
                     return await msg.reply(f'Kamu telah <b>di banned</b>\n\n<u>Alasan:</u> {database.get_data_bot(client.id_bot).ban[str(uid)]}\nsilahkan kontak @vxnjul untuk unbanned', True, enums.ParseMode.HTML)
                 if key in [hastag[0], hastag [1]]:
                     if key == command.lower() or len(command.split(' ')) < 3:
-                        return await msg.reply('🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML)
+                        return await gagal_kirim_handler(client, msg)
                     else:
                         return await send_menfess_handler(client, msg)
                 else:
@@ -160,7 +122,7 @@ async def on_message(client: Client, msg: Message):
                 await gagal_kirim_handler(client, msg)      
         else:
             await gagal_kirim_handler(client, msg)
-    
+
     # perintah yang bisa diakses di group
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
@@ -178,7 +140,7 @@ async def on_message(client: Client, msg: Message):
                             pass
             else:
                 return
-        
+
         if command != None:
             return
 
@@ -190,6 +152,8 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await photo_handler_inline(client, query)
     elif query.data == 'video':
         await video_handler_inline(client, query)
+    elif query.data == 'ggl':
+        await cb_ggl(client, query)
     elif query.data == 'nsj':
         await cb_help(client, query)
     elif query.data == 'ttp':
